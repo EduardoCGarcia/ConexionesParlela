@@ -17,7 +17,7 @@ public class Lienzo extends JPanel{
     public Lienzo(){
         this.arrayNodos = new ArrayList<Nodo>();
         this.arrayEnlaces = new ArrayList<Enlace>();
-        this.generaCubo();
+        this.crearCubos();
     }
     
     @Override
@@ -30,137 +30,13 @@ public class Lienzo extends JPanel{
         }
     }
     
-    public void generaCubo(){
-        this.arrayNodos.add(new Nodo(50,50));   //Nodo 0000
-        this.arrayNodos.add(new Nodo(150,50));  //Nodo 0001
-        this.arrayNodos.add(new Nodo(50,150));  //Nodo 0010
-        this.arrayNodos.add(new Nodo(150,150)); //Nodo 0011
+    public void crearCubos(){
+        generarCubo(50, 50);
+        generaEnlacesCubo1();
         
-        this.arrayNodos.add(new Nodo(100,100)); //Nodo 0100
-        this.arrayNodos.add(new Nodo(200,100)); //Nodo 0101
-        this.arrayNodos.add(new Nodo(100,200)); //Nodo 0110
-        this.arrayNodos.add(new Nodo(200,200)); //Nodo 0111
-        repaint();
         
-        Raiz nueva;
-        // NODO 0000
-        nueva = new Raiz(arrayNodos.get(0),arrayNodos.get(1),arrayNodos.get(2),arrayNodos.get(4));
-        agregar(nueva);
-        // NODO 0001
-        nueva = new Raiz(arrayNodos.get(1),arrayNodos.get(0),arrayNodos.get(3),arrayNodos.get(5));
-        agregar(nueva);
-        // NODO 0010
-        nueva = new Raiz(arrayNodos.get(2),arrayNodos.get(3),arrayNodos.get(0),arrayNodos.get(6));
-        agregar(nueva);
-        //NODO 0011
-        nueva = new Raiz(arrayNodos.get(3),arrayNodos.get(2),arrayNodos.get(1),arrayNodos.get(7));
-        agregar(nueva);
-        // NODO 0100
-        nueva = new Raiz(arrayNodos.get(4),arrayNodos.get(5),arrayNodos.get(6),arrayNodos.get(0));
-        agregar(nueva);
-        // NODO 0101
-        nueva = new Raiz(arrayNodos.get(5),arrayNodos.get(4),arrayNodos.get(7),arrayNodos.get(1));
-        agregar(nueva);
-        // NODO 0110
-        nueva = new Raiz(arrayNodos.get(6),arrayNodos.get(7),arrayNodos.get(4),arrayNodos.get(2));
-        agregar(nueva);
-        // NODO 0111
-        nueva = new Raiz(arrayNodos.get(7),arrayNodos.get(6),arrayNodos.get(5),arrayNodos.get(3));
-        agregar(nueva);
-
-        
-//        //nodo 0001
-//        p1 = new Point(arrayNodos.get(1).getX(), arrayNodos.get(1).getY());
-//        
-//        // Enlace 0001 ---> 0000
-//        p2 = new Point(arrayNodos.get(0).getX(), arrayNodos.get(0).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0001 ---> 0101
-//        p2 = new Point(arrayNodos.get(5).getX(), arrayNodos.get(5).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0001 ---> 0011
-//        p2 = new Point(arrayNodos.get(3).getX(), arrayNodos.get(3).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        
-//        //nodo 0010
-//        p1 = new Point(arrayNodos.get(2).getX(), arrayNodos.get(2).getY());
-//        
-//        // Enlace 0010 ---> 0000
-//        p2 = new Point(arrayNodos.get(0).getX(), arrayNodos.get(0).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0010 ---> 0110
-//        p2 = new Point(arrayNodos.get(6).getX(), arrayNodos.get(6).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0010 ---> 0011
-//        p2 = new Point(arrayNodos.get(3).getX(), arrayNodos.get(3).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        
-//        //nodo 0011
-//        p1 = new Point(arrayNodos.get(3).getX(), arrayNodos.get(3).getY());
-//        
-//        // Enlace 0011 ---> 0001
-//        p2 = new Point(arrayNodos.get(1).getX(), arrayNodos.get(1).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0011 ---> 0010
-//        p2 = new Point(arrayNodos.get(2).getX(), arrayNodos.get(2).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0011 ---> 0111
-//        p2 = new Point(arrayNodos.get(7).getX(), arrayNodos.get(7).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        
-//        //nodo 0100
-//        p1 = new Point(arrayNodos.get(4).getX(), arrayNodos.get(4).getY());
-//        
-//        // Enlace 0100 ---> 0000
-//        p2 = new Point(arrayNodos.get(0).getX(), arrayNodos.get(0).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0100 ---> 0101
-//        p2 = new Point(arrayNodos.get(5).getX(), arrayNodos.get(5).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0100 ---> 0110
-//        p2 = new Point(arrayNodos.get(6).getX(), arrayNodos.get(6).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        
-//        //nodo 0101
-//        p1 = new Point(arrayNodos.get(5).getX(), arrayNodos.get(5).getY());
-//        
-//        // Enlace 0101 ---> 0001
-//        p2 = new Point(arrayNodos.get(1).getX(), arrayNodos.get(1).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0101 ---> 0100
-//        p2 = new Point(arrayNodos.get(4).getX(), arrayNodos.get(4).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0101 ---> 0111
-//        p2 = new Point(arrayNodos.get(7).getX(), arrayNodos.get(7).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        
-//        //nodo 0110
-//        p1 = new Point(arrayNodos.get(6).getX(), arrayNodos.get(6).getY());
-//        
-//        // Enlace 0110 ---> 0010
-//        p2 = new Point(arrayNodos.get(2).getX(), arrayNodos.get(2).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0110 ---> 0111
-//        p2 = new Point(arrayNodos.get(7).getX(), arrayNodos.get(7).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0110 ---> 0100
-//        p2 = new Point(arrayNodos.get(4).getX(), arrayNodos.get(4).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        
-//        //nodo 0111
-//        p1 = new Point(arrayNodos.get(7).getX(), arrayNodos.get(7).getY());
-//        
-//        // Enlace 0111 ---> 0101
-//        p2 = new Point(arrayNodos.get(6).getX(), arrayNodos.get(6).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0111 ---> 0110
-//        p2 = new Point(arrayNodos.get(5).getX(), arrayNodos.get(5).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-//        // Enlace 0111 ---> 0011
-//        p2 = new Point(arrayNodos.get(3).getX(), arrayNodos.get(3).getY());
-//        arrayEnlaces.add(new Enlace(p1.x, p1.y, p2.x, p2.y));
-        repaint();
-        
+        generarCubo(500, 50);
+        generaEnlacesCubo2();
     }
     
     public void agregar(Raiz raiz){
@@ -168,5 +44,64 @@ public class Lienzo extends JPanel{
         arrayEnlaces.add(raiz.getVertical());
         arrayEnlaces.add(raiz.getDiagonal());
     }
-     
+    
+    public void generarCubo(int x1, int y1){
+        int x2 = x1 + 100;
+        int y2 = y1 + 100;
+        this.arrayNodos.add(new Nodo(x1, y1));   //Nodo 0000
+        this.arrayNodos.add(new Nodo(x2, y1));  //Nodo 0001
+        this.arrayNodos.add(new Nodo(x1, y2));  //Nodo 0010
+        this.arrayNodos.add(new Nodo(x2, y2)); //Nodo 0011
+        x1 += 50;
+        y1 += 50;
+        x2 = x1 + 100;
+        y2 = y1 + 100;
+        this.arrayNodos.add(new Nodo(x1, y1)); //Nodo 0100
+        this.arrayNodos.add(new Nodo(x2, y1)); //Nodo 0101
+        this.arrayNodos.add(new Nodo(x1, y2)); //Nodo 0110
+        this.arrayNodos.add(new Nodo(x2, y2)); //Nodo 0111
+        repaint();
+    }
+    
+    public void generaEnlacesCubo1(){
+        Raiz nueva;
+        nueva = new Raiz(arrayNodos.get(0),arrayNodos.get(1),arrayNodos.get(2),arrayNodos.get(4));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(1),arrayNodos.get(0),arrayNodos.get(3),arrayNodos.get(5));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(2),arrayNodos.get(3),arrayNodos.get(0),arrayNodos.get(6));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(3),arrayNodos.get(2),arrayNodos.get(1),arrayNodos.get(7));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(4),arrayNodos.get(5),arrayNodos.get(6),arrayNodos.get(0));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(5),arrayNodos.get(4),arrayNodos.get(7),arrayNodos.get(1));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(6),arrayNodos.get(7),arrayNodos.get(4),arrayNodos.get(2));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(7),arrayNodos.get(6),arrayNodos.get(5),arrayNodos.get(3));
+        agregar(nueva);
+        repaint();
+    }
+    
+    public void generaEnlacesCubo2(){
+        Raiz nueva;
+        nueva = new Raiz(arrayNodos.get(8),arrayNodos.get(9),arrayNodos.get(10),arrayNodos.get(12));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(9),arrayNodos.get(8),arrayNodos.get(11),arrayNodos.get(13));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(10),arrayNodos.get(11),arrayNodos.get(8),arrayNodos.get(14));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(11),arrayNodos.get(10),arrayNodos.get(9),arrayNodos.get(15));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(12),arrayNodos.get(13),arrayNodos.get(14),arrayNodos.get(8));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(13),arrayNodos.get(12),arrayNodos.get(15),arrayNodos.get(9));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(14),arrayNodos.get(15),arrayNodos.get(12),arrayNodos.get(10));
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(15),arrayNodos.get(14),arrayNodos.get(13),arrayNodos.get(11));
+        agregar(nueva);
+        repaint();
+    }
 }
