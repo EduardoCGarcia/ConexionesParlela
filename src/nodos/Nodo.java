@@ -9,7 +9,7 @@ import java.awt.Graphics;
  */
 public class Nodo {
     private int x,y;
-    public static final int d = 30;
+    public final int d = 15;
 
     public Nodo(int x, int y) {
         this.x = x;
@@ -17,7 +17,28 @@ public class Nodo {
     }
     
     public void pintar(Graphics g){
+        g.setColor(Color.BLACK);
         g.drawOval(this.x - d/2, this.y - d/2, d, d); //Nodo 0000
         
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+    
+    
+    
+    
 }

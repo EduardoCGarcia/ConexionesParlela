@@ -1,25 +1,32 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package app;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Label;
-import java.util.Vector;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import nodos.Lienzo;
-import nodos.Nodo;
 
 /**
  *
  * @author EduardoCGarcia
  */
 public class main extends javax.swing.JFrame {
-    private Vector<Nodo> vectorNodos;
+
     /**
      * Creates new form main
      */
     public main() {
         initComponents();
+        Lienzo lienzo = new Lienzo();
+        lienzo.setBounds(0, 0, 1000, 400);
+        
+        this.add(lienzo);
+        
+        
     }
 
     /**
@@ -31,27 +38,28 @@ public class main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnGenerarCubos = new javax.swing.JButton();
-        panelCubos = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnGenerarCubos.setText("Generar cubos de conexion");
-        btnGenerarCubos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGenerarCubosActionPerformed(evt);
-            }
-        });
+        jButton1.setText("jButton1");
 
-        javax.swing.GroupLayout panelCubosLayout = new javax.swing.GroupLayout(panelCubos);
-        panelCubos.setLayout(panelCubosLayout);
-        panelCubosLayout.setHorizontalGroup(
-            panelCubosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 495, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        panelCubosLayout.setVerticalGroup(
-            panelCubosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(347, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -59,46 +67,17 @@ public class main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(panelCubos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnGenerarCubos, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 1000, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnGenerarCubos, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(398, Short.MAX_VALUE))
-            .addComponent(panelCubos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGenerarCubosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarCubosActionPerformed
-//        Label lbl1 = new Label("Nueva");
-//        lbl1.setBounds(10,10,100,30);
-//        panelCubos.add(lbl1);
-        Lienzo nuevo = new Lienzo();
-        nuevo.setBounds(20, 20, 100, 30);
-        panelCubos.add(nuevo);
-    }//GEN-LAST:event_btnGenerarCubosActionPerformed
-    
-    @Override
-    public void paint(Graphics g){
-        for (Nodo nodo : vectorNodos) {
-            nodo.pintar(g);
-        }
-    }
-    
-    public void generaCubo(){
-        for (int i = 60; i < 200; i+=20) {
-            this.vectorNodos.add(new Nodo(i,i));
-            repaint();
-        }      
-    }
-    
     /**
      * @param args the command line arguments
      */
@@ -129,13 +108,39 @@ public class main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new main().setVisible(true);
+               new main().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGenerarCubos;
-    private javax.swing.JPanel panelCubos;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+    
+    
+    
+//    @Override
+//    public void paint(Graphics g){
+//        super.paint(g);
+//        int x=50,y=50,d=15;
+//        for (int i = 0; i < 8; i++) {
+//            g.setColor(Color.red);
+//            g.drawOval(x, y, 15, 15); //
+//        }
+//        g.setColor(Color.red);
+//        g.drawOval(50, 50, 15, 15); //
+//        g.drawOval(150, 50, 15, 15); //
+//        g.drawOval(50, 150, 15, 15); //
+//        g.drawOval(150, 150, 15, 15); //
+//        
+//        g.drawOval(100, 100, 15, 15); //
+//        g.drawOval(200, 100, 15, 15); //
+//        g.drawOval(100, 200, 15, 15); //
+//        g.drawOval(200, 200, 15, 15); //
+//        
+//    }
+    
+    
 }
