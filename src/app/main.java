@@ -4,29 +4,51 @@
  */
 package app;
 
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Label;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import nodos.Lienzo;
+import nodos.Nodo;
+import nodos.Raiz;
 
 /**
  *
  * @author EduardoCGarcia
  */
 public class main extends javax.swing.JFrame {
-
+    public static ArrayList<Graphics> arrayGraficos = new ArrayList<Graphics>();
+    Lienzo lienzo = new Lienzo();
+    JPanel p = new JPanel();
+    
     /**
      * Creates new form main
      */
     public main() {
         initComponents();
+        content.removeAll();
         Lienzo lienzo = new Lienzo();
-        lienzo.setBounds(0, 0, 1000, 400);
+        lienzo.setBounds(0, 0, 800, 400);
+        content.add(lienzo);
         
-        this.add(lienzo);
+        /*p.setBounds(0, 0, 200, 200);
+        p.setBackground(Color.red);
+        content.add(p);
         
+        JPanel j = new JPanel();
+        j.setBounds(0, 0, 400, 400);
+        j.setBackground(Color.cyan);
+        content.add(j);*/
         
+   
+//        Lienzo lienzo = new Lienzo();
+//        lienzo.setBounds(0, 0, 1000, 400);
+//        //this.getContentPane().setBackground(Color.lightGray);
+//        this.add(lienzo);
+//        
+//        this.repaint();
     }
 
     /**
@@ -38,45 +60,62 @@ public class main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        content = new javax.swing.JPanel();
+        btnLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setText("jButton1");
+        content.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                .addContainerGap())
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(347, Short.MAX_VALUE))
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 488, Short.MAX_VALUE)
         );
+
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 1000, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(btnLimpiar)
+                .addContainerGap(832, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(btnLimpiar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+//        content.removeAll();
+//        Lienzo lienzo = new Lienzo("Eduardo");
+//        lienzo.setBounds(0, 0, 800, 400);
+//        content.add(lienzo);
+//        repaint();
+       
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,33 +153,76 @@ public class main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JPanel content;
     // End of variables declaration//GEN-END:variables
-
     
+    public void panel(){
+        JPanel j = new JPanel();
+        j.setBounds(0, 0, 100, 000);
+        j.setBackground(Color.cyan);
+        p.add(j);
+        repaint();
+    }
     
+    public void crearNombres(){
+        ArrayList<String> nombres = new ArrayList<String>();
+        nombres.add("0000");nombres.add("0001");nombres.add("0010");
+        nombres.add("0011");nombres.add("0100");nombres.add("0101");
+        nombres.add("0110");nombres.add("0111");
+        generarNodos(50, 50, nombres);
+        
+        nombres.clear();
+        nombres.add("1000");nombres.add("1001");nombres.add("1010");
+        nombres.add("1011");nombres.add("1100");nombres.add("1101");
+        nombres.add("1110");nombres.add("1111");
+        generarNodos(50, 50, nombres);
+    }
     
-//    @Override
-//    public void paint(Graphics g){
-//        super.paint(g);
-//        int x=50,y=50,d=15;
-//        for (int i = 0; i < 8; i++) {
-//            g.setColor(Color.red);
-//            g.drawOval(x, y, 15, 15); //
-//        }
-//        g.setColor(Color.red);
-//        g.drawOval(50, 50, 15, 15); //
-//        g.drawOval(150, 50, 15, 15); //
-//        g.drawOval(50, 150, 15, 15); //
-//        g.drawOval(150, 150, 15, 15); //
-//        
-//        g.drawOval(100, 100, 15, 15); //
-//        g.drawOval(200, 100, 15, 15); //
-//        g.drawOval(100, 200, 15, 15); //
-//        g.drawOval(200, 200, 15, 15); //
-//        
-//    }
+    public void generarNodos(int x1, int y1, ArrayList<String> noms){
+        ArrayList<Nodo> arrayNodos = new ArrayList<Nodo>();
+        int x2 = x1 + 100;
+        int y2 = y1 + 100;
+        arrayNodos.add(new Nodo(x1, y1, noms.get(0),Color.BLACK,30));   //Nodo 0000
+        arrayNodos.add(new Nodo(x2, y1, noms.get(1),Color.BLACK,30));  //Nodo 0001
+        arrayNodos.add(new Nodo(x1, y2, noms.get(2),Color.BLACK,30));  //Nodo 0010
+        arrayNodos.add(new Nodo(x2, y2, noms.get(3),Color.BLACK,30)); //Nodo 0011
+        x1 += 50;
+        y1 += 50;
+        x2 = x1 + 100;
+        y2 = y1 + 100;
+        arrayNodos.add(new Nodo(x1, y1, noms.get(4),Color.BLACK,30)); //Nodo 0100
+        arrayNodos.add(new Nodo(x2, y1, noms.get(5),Color.BLACK,30)); //Nodo 0101
+        arrayNodos.add(new Nodo(x1, y2, noms.get(6),Color.BLACK,30)); //Nodo 0110
+        arrayNodos.add(new Nodo(x2, y2, noms.get(7),Color.BLACK,30)); //Nodo 0111
+        
+        //repaint();
+    }
+   
+    public void generaEnlacesCubo1(ArrayList<Nodo> arrayNodos){
+        Raiz nueva;
+        nueva = new Raiz(arrayNodos.get(0),arrayNodos.get(1),arrayNodos.get(2),arrayNodos.get(4), Color.BLUE);
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(1),arrayNodos.get(0),arrayNodos.get(3),arrayNodos.get(5), Color.BLUE);
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(2),arrayNodos.get(3),arrayNodos.get(0),arrayNodos.get(6), Color.BLUE);
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(3),arrayNodos.get(2),arrayNodos.get(1),arrayNodos.get(7), Color.BLUE);
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(4),arrayNodos.get(5),arrayNodos.get(6),arrayNodos.get(0), Color.BLUE);
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(5),arrayNodos.get(4),arrayNodos.get(7),arrayNodos.get(1), Color.BLUE);
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(6),arrayNodos.get(7),arrayNodos.get(4),arrayNodos.get(2), Color.BLUE);
+        agregar(nueva);
+        nueva = new Raiz(arrayNodos.get(7),arrayNodos.get(6),arrayNodos.get(5),arrayNodos.get(3), Color.BLUE);
+        agregar(nueva);
+        repaint();
+    }
     
-    
+    public void agregar(Raiz raiz){
+        arrayEnlaces.add(raiz.getHorizontal());
+        arrayEnlaces.add(raiz.getVertical());
+        arrayEnlaces.add(raiz.getDiagonal());
+    }
 }

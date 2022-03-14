@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package nodos;
 
+import java.awt.Color;
 import java.awt.Point;
 
 
@@ -14,28 +11,29 @@ import java.awt.Point;
 public class Raiz {
    private Nodo raiz, nodoH, nodoV, nodoD, nodoC;
    private Enlace horizontal, vertical, diagonal, curva;
+   private Color colorEnlace;
 
-    public Raiz(Nodo raiz, Nodo nodoH, Nodo nodoV, Nodo nodoD, Nodo nodoC) {
+    public Raiz(Nodo raiz, Nodo nodoH, Nodo nodoV, Nodo nodoD, Nodo nodoC, Color colorEnlace) {
         this.raiz = raiz;
         this.nodoH = nodoH;
         this.nodoV = nodoV;
         this.nodoD = nodoD;
         this.nodoC = nodoC;
-        this.setHorizontal(new Enlace(raiz.getX(), raiz.getY(), nodoH.getX(), nodoH.getY()));
-        this.setVertical(new Enlace(raiz.getX(), raiz.getY(), nodoV.getX(), nodoV.getY()));
-        this.setDiagonal(new Enlace(raiz.getX(), raiz.getY(), nodoD.getX(), nodoD.getY()));
-        this.setCurva(new Enlace(raiz.getX(), raiz.getY(), nodoC.getX(), nodoC.getY()));
+        this.setHorizontal(new Enlace(raiz.getX(), raiz.getY(), nodoH.getX(), nodoH.getY(),colorEnlace));
+        this.setVertical(new Enlace(raiz.getX(), raiz.getY(), nodoV.getX(), nodoV.getY(), colorEnlace));
+        this.setDiagonal(new Enlace(raiz.getX(), raiz.getY(), nodoD.getX(), nodoD.getY(), colorEnlace));
+        this.setCurva(new Enlace(raiz.getX(), raiz.getY(), nodoC.getX(), nodoC.getY(), colorEnlace));
 
     }
 
-    public Raiz(Nodo raiz, Nodo nodoH, Nodo nodoV, Nodo nodoD) {
+    public Raiz(Nodo raiz, Nodo nodoH, Nodo nodoV, Nodo nodoD, Color colorEnlace) {
         this.raiz = raiz;
         this.nodoH = nodoH;
         this.nodoV = nodoV;
         this.nodoD = nodoD;
-        this.setHorizontal(new Enlace(raiz.getX(), raiz.getY(), nodoH.getX(), nodoH.getY()));
-        this.setVertical(new Enlace(raiz.getX(), raiz.getY(), nodoV.getX(), nodoV.getY()));
-        this.setDiagonal(new Enlace(raiz.getX(), raiz.getY(), nodoD.getX(), nodoD.getY()));
+        this.setHorizontal(new Enlace(raiz.getX(), raiz.getY(), nodoH.getX(), nodoH.getY(), colorEnlace));
+        this.setVertical(new Enlace(raiz.getX(), raiz.getY(), nodoV.getX(), nodoV.getY(), colorEnlace));
+        this.setDiagonal(new Enlace(raiz.getX(), raiz.getY(), nodoD.getX(), nodoD.getY(), colorEnlace));
     }
 
     public Nodo getRaiz() {

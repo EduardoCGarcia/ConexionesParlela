@@ -1,26 +1,36 @@
  package nodos;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
-
+import static app.main.arrayGraficos;
+ 
 /**
  *
  * @author EduardoCGarcia
  */
 public class Nodo {
     private int x,y;
-    public final int d = 15;
+    private String nombre;
+    public Graphics dibujo;
+    public Color c;
+    public final int d = 30;
 
-    public Nodo(int x, int y) {
+    public Nodo(int x, int y, String nombre) {
         this.x = x;
         this.y = y;
+        this.nombre = nombre;
     }
     
     public void pintar(Graphics g){
-        g.setColor(Color.BLACK);
-        g.drawOval(this.x - d/2, this.y - d/2, d, d); //Nodo 0000
-        
+        g.setColor(c);
+        g.fillOval(this.x - d/2, this.y - d/2, d, d); //Nodo 0000
+        g.setFont(new Font("Serif", Font.BOLD + Font.ITALIC, 14));
+        g.drawString(nombre, x-d/2, y-d/2);
+        this.dibujo = g;
     }
+    
+  
 
     public int getX() {
         return x;
@@ -37,6 +47,32 @@ public class Nodo {
     public void setY(int y) {
         this.y = y;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Graphics getDibujo() {
+        return dibujo;
+    }
+
+    public void setDibujo(Graphics dibujo) {
+        this.dibujo = dibujo;
+    }
+
+    public Color getC() {
+        return c;
+    }
+
+    public void setC(Color c) {
+        this.c = c;
+    }
+    
+    
     
     
     
