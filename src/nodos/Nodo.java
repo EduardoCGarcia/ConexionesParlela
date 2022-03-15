@@ -3,7 +3,6 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import static app.main.arrayGraficos;
  
 /**
  *
@@ -13,20 +12,32 @@ public class Nodo {
     private int x,y;
     private String nombre;
     public Graphics dibujo;
-    public Color c;
-    public final int d = 30;
+    private Color colorNodo;
+    private int diametro;
 
-    public Nodo(int x, int y, String nombre) {
+    /*public Nodo(int x, int y, String nombre) {
         this.x = x;
         this.y = y;
         this.nombre = nombre;
+    }*/
+
+    public Nodo(int x, int y, String nombre, Color colorNodo, int diametro) {
+        this.x = x;
+        this.y = y;
+        this.nombre = nombre;
+        this.dibujo = dibujo;
+        this.colorNodo = colorNodo;
+        this.diametro = diametro;
     }
+
+    
+    
     
     public void pintar(Graphics g){
-        g.setColor(c);
-        g.fillOval(this.x - d/2, this.y - d/2, d, d); //Nodo 0000
+        g.setColor(colorNodo);
+        g.fillOval(this.x - diametro/2, this.y - diametro/2, diametro, diametro); //Nodo 0000
         g.setFont(new Font("Serif", Font.BOLD + Font.ITALIC, 14));
-        g.drawString(nombre, x-d/2, y-d/2);
+        g.drawString(nombre, x-diametro/2, y-diametro/2);
         this.dibujo = g;
     }
     
@@ -64,14 +75,7 @@ public class Nodo {
         this.dibujo = dibujo;
     }
 
-    public Color getC() {
-        return c;
-    }
 
-    public void setC(Color c) {
-        this.c = c;
-    }
-    
     
     
     

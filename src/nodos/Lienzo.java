@@ -16,10 +16,9 @@ public class Lienzo extends JPanel{
     private ArrayList<Raiz> arrayRaices;
     private ArrayList<Cubo> arrayCubos;
     
-    public Lienzo(ArrayList<Nodo> arrayNodos, ArrayList<Enlace> arrayEnlaces) {
+    public Lienzo() {
         this.arrayNodos = arrayNodos;
-        this.arrayEnlaces = arrayEnlaces;
-        this.arrayCubos = new ArrayList<Cubo>();
+        crearNombres();
     }
     
     /*public Lienzo(String name){
@@ -34,9 +33,73 @@ public class Lienzo extends JPanel{
      */
     @Override
     public void paint(Graphics g){
-        Cubo cubo1 = new Cubo(this.arrayEnlaces, this.arrayNodos);
-        cubo1.pintar(g);
+        /*Cubo cubo1 = new Cubo(this.arrayEnlaces, this.arrayNodos);
+        cubo1.pintar(g);*/
+        for (Nodo nodo : arrayNodos) {
+            nodo.pintar(g);
+        }
+        repaint();
     }
+    
+    public void crearNombres(){
+        ArrayList<String> nombres = new ArrayList<String>();
+        nombres.add("0000");nombres.add("0001");nombres.add("0010");
+        nombres.add("0011");nombres.add("0100");nombres.add("0101");
+        nombres.add("0110");nombres.add("0111");
+        generarNodos(50, 50, nombres,Color.BLACK);
+        
+        nombres.clear();
+        nombres.add("1000");nombres.add("1001");nombres.add("1010");
+        nombres.add("1011");nombres.add("1100");nombres.add("1101");
+        nombres.add("1110");nombres.add("1111");
+        generarNodos(50, 50, nombres,Color.BLACK);
+    }
+    
+    public void generarNodos(int x1, int y1, ArrayList<String> noms, Color c){
+        int x2 = x1 + 100;
+        int y2 = y1 + 100;
+        arrayNodos.add(new Nodo(x1, y1, noms.get(0),c,30));   //Nodo 0000
+        arrayNodos.add(new Nodo(x2, y1, noms.get(1),c,30));  //Nodo 0001
+        arrayNodos.add(new Nodo(x1, y2, noms.get(2),c,30));  //Nodo 0010
+        arrayNodos.add(new Nodo(x2, y2, noms.get(3),c,30)); //Nodo 0011
+        x1 += 50;
+        y1 += 50;
+        x2 = x1 + 100;
+        y2 = y1 + 100;
+        arrayNodos.add(new Nodo(x1, y1, noms.get(4),c,30)); //Nodo 0100
+        arrayNodos.add(new Nodo(x2, y1, noms.get(5),c,30)); //Nodo 0101
+        arrayNodos.add(new Nodo(x1, y2, noms.get(6),c,30)); //Nodo 0110
+        arrayNodos.add(new Nodo(x2, y2, noms.get(7),c,30)); //Nodo 0111
+        repaint();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     /*public void crearCubos(){
         ArrayList<String> nombres = new ArrayList<String>();
