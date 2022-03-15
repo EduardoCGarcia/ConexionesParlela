@@ -1,30 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package app;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Label;
-import javax.swing.JPanel;
-import nodos.Lienzo;
-
+import java.util.ArrayList;
+import static app.Lienzo.c;
+import grafos.Nodo;
 /**
  *
  * @author EduardoCGarcia
  */
 public class main extends javax.swing.JFrame {
-
+    public ArrayList<Graphics> arrayGraficos = new ArrayList<Graphics>();
     /**
      * Creates new form main
      */
     public main() {
         initComponents();
-        Lienzo lienzo = new Lienzo();
-        lienzo.setBounds(0, 0, 1000, 400);
         
-        this.add(lienzo);
+        content.removeAll();
+        Lienzo l = new Lienzo();
+        l.setBounds(0, 0, 600, 599);
+        content.add(l);
+        content.repaint();
+        l.removeAll();
+        repaint();
+        
+        /*JPanel l = new JPanel();
+        l.setBounds(0, 0, 400, 400);
+        l.setBackground(Color.red);
+        content.add(l);
+        content.repaint();*/
+        
         
         
     }
@@ -38,45 +44,62 @@ public class main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        content = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        content.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                .addContainerGap())
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(347, Short.MAX_VALUE))
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
+
+        jButton1.setText("jajajaja");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 1000, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(jButton1)
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ArrayList<Nodo> a = c.getNodos();
+        for (Nodo nodo : a) {
+            nodo.setColorNodo(new Color(12,133,0));
+            repaint();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,43 +127,18 @@ public class main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               new main().setVisible(true);
+                new main().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel content;
     private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
-
-    
-    
-    
-//    @Override
-//    public void paint(Graphics g){
-//        super.paint(g);
-//        int x=50,y=50,d=15;
-//        for (int i = 0; i < 8; i++) {
-//            g.setColor(Color.red);
-//            g.drawOval(x, y, 15, 15); //
-//        }
-//        g.setColor(Color.red);
-//        g.drawOval(50, 50, 15, 15); //
-//        g.drawOval(150, 50, 15, 15); //
-//        g.drawOval(50, 150, 15, 15); //
-//        g.drawOval(150, 150, 15, 15); //
-//        
-//        g.drawOval(100, 100, 15, 15); //
-//        g.drawOval(200, 100, 15, 15); //
-//        g.drawOval(100, 200, 15, 15); //
-//        g.drawOval(200, 200, 15, 15); //
-//        
-//    }
-    
-    
 }
