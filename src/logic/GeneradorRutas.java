@@ -31,11 +31,15 @@ public class GeneradorRutas {
     public void pintarNodos(){
         this.raizOrigen.getRaiz().setColorNodo(Color.red);
         this.raizH.getRaiz().setColorNodo(Color.red);
+        this.raizV.getRaiz().setColorNodo(Color.red);
+        this.raizD.getRaiz().setColorNodo(Color.red);
+        this.raizC.getRaiz().setColorNodo(Color.red);
     }
     
     public void pintarEnlaceHorizontal(){
         this.raizOrigen.getHorizontal().setEnlaceColor(Color.red);
         this.raizH.getHorizontal().setEnlaceColor(Color.red);
+        
     }
     
     
@@ -47,21 +51,25 @@ public class GeneradorRutas {
                 findHVDC(
                         r.getNodoH().getNombre(),
                         r.getNodoV().getNombre(),
-                        r.getNodoD().getNombre());
+                        r.getNodoD().getNombre(),
+                        r.getNodoC().getNombre());
             } else if (r.getRaiz().getNombre().equals(nombreDestino)){
                 this.raizDestino = r;
             }
         }
     }
     
-    public void findHVDC(String h,String v,String d){
+    public void findHVDC(String h,String v,String d, String c){
         for (Raiz r : raices) {
             if (r.getRaiz().getNombre().equals(h)) {
                 this.raizH = r;
+                
             } else if (r.getRaiz().getNombre().equals(v)) {
                 this.raizV = r;
             } else if (r.getRaiz().getNombre().equals(d)) {
                 this.raizD = r;
+            } else if (r.getRaiz().getNombre().equals(c)) {
+                this.raizC = r;
             } 
         }
     }

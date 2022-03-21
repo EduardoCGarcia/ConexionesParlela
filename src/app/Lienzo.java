@@ -49,16 +49,18 @@ public class Lienzo extends JPanel{
         nombres.add("0011");nombres.add("0100");nombres.add("0101");
         nombres.add("0110");nombres.add("0111");
         generarNodos(25, 25, nombres,Color.GREEN);
-        generaEnlacesCubo1(arrayNodos);
+        
         
         nombres.clear();
         nombres.add("1000");nombres.add("1001");nombres.add("1010");
         nombres.add("1011");nombres.add("1100");nombres.add("1101");
         nombres.add("1110");nombres.add("1111");
         generarNodos(200, 375, nombres,Color.GREEN);
-        generaEnlacesCubo2(arrayNodos);
         
-        generaCurvas(arrayNodos);
+        generaEnlacesCubo1(arrayNodos);
+        //generaEnlacesCubo2(arrayNodos);
+        
+        //generaCurvas(arrayNodos);
     }
     
     public void generarNodos(int x1, int y1, ArrayList<String> noms, Color c){
@@ -81,44 +83,41 @@ public class Lienzo extends JPanel{
     
     public void generaEnlacesCubo1(ArrayList<Nodo> arrayNodos){
         Raiz nueva;
-        nueva = new Raiz(arrayNodos.get(0),arrayNodos.get(1),arrayNodos.get(2),arrayNodos.get(4), Color.green);
+        nueva = new Raiz(arrayNodos.get(0),arrayNodos.get(1),arrayNodos.get(2),arrayNodos.get(4), arrayNodos.get(8), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(1),arrayNodos.get(0),arrayNodos.get(3),arrayNodos.get(5), Color.green);
+        nueva = new Raiz(arrayNodos.get(1),arrayNodos.get(0),arrayNodos.get(3),arrayNodos.get(5), arrayNodos.get(9), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(2),arrayNodos.get(3),arrayNodos.get(0),arrayNodos.get(6), Color.green);
+        nueva = new Raiz(arrayNodos.get(2),arrayNodos.get(3),arrayNodos.get(0),arrayNodos.get(6), arrayNodos.get(10), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(3),arrayNodos.get(2),arrayNodos.get(1),arrayNodos.get(7), Color.green);
+        nueva = new Raiz(arrayNodos.get(3),arrayNodos.get(2),arrayNodos.get(1),arrayNodos.get(7), arrayNodos.get(11), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(4),arrayNodos.get(5),arrayNodos.get(6),arrayNodos.get(0), Color.green);
+        nueva = new Raiz(arrayNodos.get(4),arrayNodos.get(5),arrayNodos.get(6),arrayNodos.get(0), arrayNodos.get(12), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(5),arrayNodos.get(4),arrayNodos.get(7),arrayNodos.get(1), Color.green);
+        nueva = new Raiz(arrayNodos.get(5),arrayNodos.get(4),arrayNodos.get(7),arrayNodos.get(1), arrayNodos.get(13), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(6),arrayNodos.get(7),arrayNodos.get(4),arrayNodos.get(2), Color.green);
+        nueva = new Raiz(arrayNodos.get(6),arrayNodos.get(7),arrayNodos.get(4),arrayNodos.get(2), arrayNodos.get(14), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(7),arrayNodos.get(6),arrayNodos.get(5),arrayNodos.get(3), Color.green);
+        nueva = new Raiz(arrayNodos.get(7),arrayNodos.get(6),arrayNodos.get(5),arrayNodos.get(3), arrayNodos.get(15), Color.green);
         agregar(nueva);
-        repaint();
-    }
-    public void generaEnlacesCubo2(ArrayList<Nodo> arrayNodos){
-        Raiz nueva;
-        nueva = new Raiz(arrayNodos.get(8),arrayNodos.get(9),arrayNodos.get(10),arrayNodos.get(12), Color.green);
+        nueva = new Raiz(arrayNodos.get(8),arrayNodos.get(9),arrayNodos.get(10),arrayNodos.get(12), arrayNodos.get(0), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(9),arrayNodos.get(8),arrayNodos.get(11),arrayNodos.get(13), Color.green);
+        nueva = new Raiz(arrayNodos.get(9),arrayNodos.get(8),arrayNodos.get(11),arrayNodos.get(13), arrayNodos.get(1), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(10),arrayNodos.get(11),arrayNodos.get(8),arrayNodos.get(14), Color.green);
+        nueva = new Raiz(arrayNodos.get(10),arrayNodos.get(11),arrayNodos.get(8),arrayNodos.get(14), arrayNodos.get(2), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(11),arrayNodos.get(10),arrayNodos.get(9),arrayNodos.get(15), Color.green);
+        nueva = new Raiz(arrayNodos.get(11),arrayNodos.get(10),arrayNodos.get(9),arrayNodos.get(15), arrayNodos.get(3), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(12),arrayNodos.get(13),arrayNodos.get(14),arrayNodos.get(8), Color.green);
+        nueva = new Raiz(arrayNodos.get(12),arrayNodos.get(13),arrayNodos.get(14),arrayNodos.get(8), arrayNodos.get(4), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(13),arrayNodos.get(12),arrayNodos.get(15),arrayNodos.get(9), Color.green);
+        nueva = new Raiz(arrayNodos.get(13),arrayNodos.get(12),arrayNodos.get(15),arrayNodos.get(9), arrayNodos.get(5), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(14),arrayNodos.get(15),arrayNodos.get(12),arrayNodos.get(10), Color.green);
+        nueva = new Raiz(arrayNodos.get(14),arrayNodos.get(15),arrayNodos.get(12),arrayNodos.get(10), arrayNodos.get(6), Color.green);
         agregar(nueva);
-        nueva = new Raiz(arrayNodos.get(15),arrayNodos.get(14),arrayNodos.get(13),arrayNodos.get(11), Color.green);
+        nueva = new Raiz(arrayNodos.get(15),arrayNodos.get(14),arrayNodos.get(13),arrayNodos.get(11), arrayNodos.get(7), Color.green);
         agregar(nueva);
         repaint();
     }
+    
     public void generaCurvas(ArrayList<Nodo> arrayNodos){
         Raiz nueva;
         nueva = new Raiz(arrayNodos.get(8), arrayNodos.get(0), Color.red);
@@ -165,6 +164,7 @@ public class Lienzo extends JPanel{
         arrayEnlaces.add(raiz.getHorizontal());
         arrayEnlaces.add(raiz.getVertical());
         arrayEnlaces.add(raiz.getDiagonal());
+        arrayEnlaces.add(raiz.getCurva());
         arrayRaices.add(raiz);
     }
     

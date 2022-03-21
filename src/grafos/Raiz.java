@@ -30,6 +30,7 @@ public class Raiz {
         this.nodoH = nodoH;
         this.nodoV = nodoV;
         this.nodoD = nodoD;
+        this.nodoC = nodoC;
         this.nombre = raiz.getNombre();
         this.setHorizontal(new Enlace(raiz.getX(), raiz.getY(), nodoH.getX(), nodoH.getY(), colorEnlace, raiz.getNombre() + "-" + nodoH.getNombre()));
         this.setVertical(new Enlace(raiz.getX(), raiz.getY(), nodoV.getX(), nodoV.getY(), colorEnlace, raiz.getNombre() + "-" + nodoV.getNombre()));
