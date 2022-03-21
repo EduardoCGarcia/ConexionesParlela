@@ -10,14 +10,20 @@ import java.util.ArrayList;
 public class Cubo {
     private ArrayList<Nodo> nodos;
     private ArrayList<Enlace> enlaces;
+    private ArrayList<Raiz> enlacesFinales;
+    ArrayList<Raiz> raices;
 
     public Cubo() {
     }
 
-    public Cubo(ArrayList<Nodo> arrayNodos, ArrayList<Enlace> ArrayEnlaces) {
-        this.nodos = arrayNodos;
-        this.enlaces = ArrayEnlaces;
+    public Cubo(ArrayList<Nodo> nodos, ArrayList<Enlace> enlaces, ArrayList<Raiz> raices, ArrayList<Raiz> enlacesFinales) {
+        this.nodos = nodos;
+        this.enlaces = enlaces;
+        this.raices = raices;
+        this.enlacesFinales = enlacesFinales;
     }
+
+    
     
     public void pintar(Graphics g){
         for (Nodo nodo : nodos) {
@@ -26,7 +32,7 @@ public class Cubo {
         
         for (Enlace enlace : enlaces) {
             enlace.pintar(g);
-            System.out.println(enlace.getId());
+            //System.out.println(enlace.getId());
         }
     }
 
@@ -43,8 +49,26 @@ public class Cubo {
     }
 
     public void setEnlaces(ArrayList<Enlace> enlaces) {
-        this.enlaces = enlaces;
+        this.enlaces = enlaces;     
     }
+
+    public ArrayList<Raiz> getRaices() {
+        return raices;
+    }
+
+    public void setRaices(ArrayList<Raiz> raices) {
+        this.raices = raices;
+    }
+
+    public ArrayList<Raiz> getEnlacesFinales() {
+        return enlacesFinales;
+    }
+
+    public void setEnlacesFinales(ArrayList<Raiz> enlacesFinales) {
+        this.enlacesFinales = enlacesFinales;
+    }
+    
+    
     
     
     

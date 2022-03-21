@@ -12,28 +12,35 @@ public class Raiz {
    private Nodo raiz, nodoH, nodoV, nodoD, nodoC;
    private Enlace horizontal, vertical, diagonal, curva;
    private Color colorEnlace;
-
-    public Raiz(Nodo raiz, Nodo nodoH, Nodo nodoV, Nodo nodoD, Nodo nodoC, Color colorEnlace) {
-        this.raiz = raiz;
-        this.nodoH = nodoH;
-        this.nodoV = nodoV;
-        this.nodoD = nodoD;
-        this.nodoC = nodoC;
-        this.setHorizontal(new Enlace(raiz.getX(), raiz.getY(), nodoH.getX(), nodoH.getY(),colorEnlace,raiz.getNombre() + "-" + nodoH.getNombre()));
-        this.setVertical(new Enlace(raiz.getX(), raiz.getY(), nodoV.getX(), nodoV.getY(), colorEnlace,raiz.getNombre() + "-" + nodoV.getNombre()));
-        this.setDiagonal(new Enlace(raiz.getX(), raiz.getY(), nodoD.getX(), nodoD.getY(), colorEnlace,raiz.getNombre() + "-" + nodoV.getNombre()));
-        this.setCurva(new Enlace(raiz.getX(), raiz.getY(), nodoC.getX(), nodoC.getY(), colorEnlace, raiz.getNombre() + "-" + nodoC.getNombre()));
-
-    }
+   private String nombre;
 
     public Raiz(Nodo raiz, Nodo nodoH, Nodo nodoV, Nodo nodoD, Color colorEnlace) {
         this.raiz = raiz;
         this.nodoH = nodoH;
         this.nodoV = nodoV;
         this.nodoD = nodoD;
+        this.nombre = raiz.getNombre();
         this.setHorizontal(new Enlace(raiz.getX(), raiz.getY(), nodoH.getX(), nodoH.getY(), colorEnlace, raiz.getNombre() + "-" + nodoH.getNombre()));
         this.setVertical(new Enlace(raiz.getX(), raiz.getY(), nodoV.getX(), nodoV.getY(), colorEnlace, raiz.getNombre() + "-" + nodoV.getNombre()));
         this.setDiagonal(new Enlace(raiz.getX(), raiz.getY(), nodoD.getX(), nodoD.getY(), colorEnlace, raiz.getNombre() + "-" + nodoV.getNombre()));
+    }
+    
+    public Raiz(Nodo raiz, Nodo nodoH, Nodo nodoV, Nodo nodoD, Nodo nodoC,Color colorEnlace) {
+        this.raiz = raiz;
+        this.nodoH = nodoH;
+        this.nodoV = nodoV;
+        this.nodoD = nodoD;
+        this.nombre = raiz.getNombre();
+        this.setHorizontal(new Enlace(raiz.getX(), raiz.getY(), nodoH.getX(), nodoH.getY(), colorEnlace, raiz.getNombre() + "-" + nodoH.getNombre()));
+        this.setVertical(new Enlace(raiz.getX(), raiz.getY(), nodoV.getX(), nodoV.getY(), colorEnlace, raiz.getNombre() + "-" + nodoV.getNombre()));
+        this.setDiagonal(new Enlace(raiz.getX(), raiz.getY(), nodoD.getX(), nodoD.getY(), colorEnlace, raiz.getNombre() + "-" + nodoV.getNombre()));
+        this.setCurva(new Enlace(raiz.getX(), raiz.getY(), nodoC.getX(), nodoC.getY(), colorEnlace, raiz.getNombre() + "-" + nodoC.getNombre()));
+    }
+    
+    public Raiz(Nodo raiz, Nodo nodoC, Color colorEnlace) {
+        this.raiz = raiz;
+        this.nodoC = nodoC;
+        this.setCurva(new Enlace(raiz.getX(), raiz.getY(), nodoC.getX(), nodoC.getY(), colorEnlace, raiz.getNombre() + "-" + nodoC.getNombre()));
     }
 
     public Nodo getRaiz() {
@@ -108,21 +115,22 @@ public class Raiz {
         this.curva = curva;
     }
 
-//    public void getPoints(Nodo raiz,Nodo nodoH,Nodo nodoV,Nodo nodoD, ArrayList<Enlace> arrayEnlaces){
-//        Point pR,pH, pV, pD;
-//        // Raíz
-//        pR = new Point(raiz.getX(), raiz.getY());
-//        pH = new Point(nodoH.getX(), nodoH.getY());
-//        pV = new Point(raiz.getX(), raiz.getY());
-//        pD = new Point(raiz.getX(), raiz.getY());
-//        
-//        this.pintar(pR, pH,pV, pD, arrayEnlaces);
-//    }
+    public Color getColorEnlace() {
+        return colorEnlace;
+    }
+
+    public void setColorEnlace(Color colorEnlace) {
+        this.colorEnlace = colorEnlace;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     
-    
-   
-   public void pintar(Point raiz, Point nodoH, Point nodoV, Point nodoD, Point nodoC){
-       
-   }
    
 }
