@@ -14,16 +14,7 @@ public class Raiz {
    private Color colorEnlace;
    private String nombre;
 
-    public Raiz(Nodo raiz, Nodo nodoH, Nodo nodoV, Nodo nodoD, Color colorEnlace) {
-        this.raiz = raiz;
-        this.nodoH = nodoH;
-        this.nodoV = nodoV;
-        this.nodoD = nodoD;
-        this.nombre = raiz.getNombre();
-        this.setHorizontal(new Enlace(raiz.getX(), raiz.getY(), nodoH.getX(), nodoH.getY(), colorEnlace, raiz.getNombre() + "-" + nodoH.getNombre()));
-        this.setVertical(new Enlace(raiz.getX(), raiz.getY(), nodoV.getX(), nodoV.getY(), colorEnlace, raiz.getNombre() + "-" + nodoV.getNombre()));
-        this.setDiagonal(new Enlace(raiz.getX(), raiz.getY(), nodoD.getX(), nodoD.getY(), colorEnlace, raiz.getNombre() + "-" + nodoV.getNombre()));
-    }
+ 
     
     public Raiz(Nodo raiz, Nodo nodoH, Nodo nodoV, Nodo nodoD, Nodo nodoC,Color colorEnlace) {
         this.raiz = raiz;
@@ -34,7 +25,7 @@ public class Raiz {
         this.nombre = raiz.getNombre();
         this.setHorizontal(new Enlace(raiz.getX(), raiz.getY(), nodoH.getX(), nodoH.getY(), colorEnlace, raiz.getNombre() + "-" + nodoH.getNombre()));
         this.setVertical(new Enlace(raiz.getX(), raiz.getY(), nodoV.getX(), nodoV.getY(), colorEnlace, raiz.getNombre() + "-" + nodoV.getNombre()));
-        this.setDiagonal(new Enlace(raiz.getX(), raiz.getY(), nodoD.getX(), nodoD.getY(), colorEnlace, raiz.getNombre() + "-" + nodoV.getNombre()));
+        this.setDiagonal(new Enlace(raiz.getX(), raiz.getY(), nodoD.getX(), nodoD.getY(), colorEnlace, raiz.getNombre() + "-" + nodoD.getNombre()));
         this.setCurva(new Enlace(raiz.getX(), raiz.getY(), nodoC.getX(), nodoC.getY(), colorEnlace, raiz.getNombre() + "-" + nodoC.getNombre()));
     }
     

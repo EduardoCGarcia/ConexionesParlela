@@ -12,11 +12,34 @@ import java.util.Random;
  */
 public class Pruebas {
     public static void main(String[] args) {
-        Random r = new Random();
-        for (int i = 0; i < 20; i++) {
-            System.out.println(r.nextInt(0, 4));
+        String tag = "1111";
+        Random indiceRandom = new Random();
+        StringBuilder n = new StringBuilder(tag);
+        int i;
+        while(!tag.equals("0000")){
+            i = indiceRandom.nextInt(0, 4);
+            if (tag.charAt(i) == '1') {
+                n.setCharAt(i, '0');
+                tag = n.toString();
+                switch (i) {
+                    case 0 -> {
+                        System.out.println("Curva");
+                    }
+                    case 1 -> {
+                        System.out.println("Diagonal");
+                    }
+                    case 2 -> {
+                        System.out.println("Vertical");
+                    }
+                    case 3 -> {
+                        System.out.println("Horizontal");
+                    }
+                }
+            } 
+            
+            
         }
-        
+        System.out.println("Nuevo tag" + tag);
         
     }
 }

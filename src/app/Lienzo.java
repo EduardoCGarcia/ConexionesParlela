@@ -118,7 +118,7 @@ public class Lienzo extends JPanel{
         repaint();
     }
     
-    public void generaCurvas(ArrayList<Nodo> arrayNodos){
+   /* public void generaCurvas(ArrayList<Nodo> arrayNodos){
         Raiz nueva;
         nueva = new Raiz(arrayNodos.get(8), arrayNodos.get(0), Color.red);
         agregarCurva(nueva);
@@ -137,7 +137,7 @@ public class Lienzo extends JPanel{
         nueva = new Raiz(arrayNodos.get(15),arrayNodos.get(7),  Color.red);
         agregarCurva(nueva);
         repaint();
-    }
+    }*/
     
     public void generaEnlacesFinales(ArrayList<Nodo> arrayNodos){
         Raiz nueva;
@@ -159,7 +159,7 @@ public class Lienzo extends JPanel{
         llenarRaicesFinales(nueva);
         repaint();
     }
-    
+   
     public void agregar(Raiz raiz){
         arrayEnlaces.add(raiz.getHorizontal());
         arrayEnlaces.add(raiz.getVertical());
