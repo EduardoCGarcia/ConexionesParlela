@@ -1,15 +1,14 @@
 package app;
 
-import java.awt.Color;
+import Atxy2k.CustomTextField.RestrictedTextField;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import static app.Lienzo.c;
-import grafos.Enlace;
-import grafos.Nodo;
 import grafos.Raiz;
-import java.util.Random;
+import java.util.Set;
 import static logic.Compuertas.XOR;
 import logic.GeneradorRutas;
+import logic.PermutationFinder;
 /**
  *
  * @author EduardoCGarcia
@@ -21,6 +20,12 @@ public class main extends javax.swing.JFrame {
      */
     public main() {
         initComponents();
+        RestrictedTextField resOrigen = new RestrictedTextField(txtOrigen);
+        resOrigen.setLimit(4);
+        resOrigen.setOnlyNums(true);
+        RestrictedTextField resDestino = new RestrictedTextField(txtDestino);
+        resDestino.setLimit(4);
+        resDestino.setOnlyNums(true);
         generarCubos();
     }
 
@@ -41,10 +46,13 @@ public class main extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtDestino = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        lblMsj = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtRutas = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        content.setBackground(new java.awt.Color(0, 0, 0));
+        content.setBackground(new java.awt.Color(153, 153, 255));
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
@@ -57,16 +65,19 @@ public class main extends javax.swing.JFrame {
             .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        btnEjecutar.setText("Encontrar camino");
+        pnlLateral.setBackground(new java.awt.Color(102, 102, 255));
+        pnlLateral.setBorder(null);
+
+        btnEjecutar.setText("E N C O N T R A R     C A M I N O");
         btnEjecutar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEjecutarActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Origen: ");
+        jLabel1.setText("O R I G E N");
 
-        jLabel2.setText("Destino:");
+        jLabel2.setText("D E S T I N O");
 
         txtDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,30 +85,52 @@ public class main extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Agency FB", 1, 36)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("H I P E R C U B O S");
+
+        lblMsj.setFont(new java.awt.Font("Dosis", 0, 24)); // NOI18N
+        lblMsj.setForeground(new java.awt.Color(255, 0, 0));
+        lblMsj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        txtRutas.setEditable(false);
+        txtRutas.setBackground(new java.awt.Color(0, 0, 102));
+        txtRutas.setColumns(20);
+        txtRutas.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        txtRutas.setForeground(new java.awt.Color(255, 255, 255));
+        txtRutas.setRows(5);
+        jScrollPane1.setViewportView(txtRutas);
 
         javax.swing.GroupLayout pnlLateralLayout = new javax.swing.GroupLayout(pnlLateral);
         pnlLateral.setLayout(pnlLateralLayout);
         pnlLateralLayout.setHorizontalGroup(
             pnlLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLateralLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlLateralLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(6, 6, 6)
                         .addGroup(pnlLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLateralLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEjecutar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(pnlLateralLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(btnEjecutar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtOrigen)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
+            .addGroup(pnlLateralLayout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(93, 93, 93))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLateralLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLateralLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblMsj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlLateralLayout.setVerticalGroup(
@@ -105,17 +138,21 @@ public class main extends javax.swing.JFrame {
             .addGroup(pnlLateralLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(9, 9, 9)
+                .addComponent(lblMsj, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1)
                 .addGap(18, 18, 18)
-                .addGroup(pnlLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEjecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,9 +160,9 @@ public class main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlLateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,15 +177,37 @@ public class main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEjecutarActionPerformed
-        generarCubos();
+         if (txtOrigen.getText().matches("[0-1]+") && txtDestino.getText().matches("[0-1]+")) {
+             if(!txtOrigen.getText().equals(txtDestino.getText())){
+                 if (txtOrigen.getText().length() == 4 && txtDestino.getText().length() == 4) {
+                    generarCubos();
+                    String tag = XOR(txtOrigen.getText(), txtDestino.getText());
+                    String textRutas = "";
+                    Set<String> rutas = PermutationFinder.wayFinder(tag, txtOrigen.getText(), txtDestino.getText());
+                    ArrayList<Raiz> raices = c.getRaices();
+                    GeneradorRutas g = new GeneradorRutas(
+                            txtOrigen.getText(), 
+                            txtDestino.getText(), 
+                            tag, 
+                            raices);
+                    for (String r : rutas) {
+                        textRutas += r + "\n";
+                    }
+                    txtRutas.setText(textRutas);
+                    repaint(); 
+                 } else {
+                     lblMsj.setText("El nombre de los nodos no es correcto");
+                 }
+                
+             }else {
+                 lblMsj.setText("Ambos nodos son iguales");
+             }
+        } else {
+             lblMsj.setText("Solo debes usar 0's y 1's");
+        }
         
-        ArrayList<Raiz> raices = c.getRaices();
-        GeneradorRutas g = new GeneradorRutas(
-                txtOrigen.getText(), 
-                txtDestino.getText(), 
-                XOR(txtOrigen.getText(), txtDestino.getText()), 
-                raices);
-        repaint();
+      
+        
     }//GEN-LAST:event_btnEjecutarActionPerformed
 
     private void txtDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDestinoActionPerformed
@@ -197,9 +256,12 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblMsj;
     private javax.swing.JPanel pnlLateral;
     private javax.swing.JTextField txtDestino;
     private javax.swing.JTextField txtOrigen;
+    private javax.swing.JTextArea txtRutas;
     // End of variables declaration//GEN-END:variables
     public void generarCubos(){
         content.removeAll();

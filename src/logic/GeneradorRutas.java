@@ -12,7 +12,7 @@ import java.util.Random;
 /**
  *
  * @author EduardoCGarcia
- */
+ */ 
 public class GeneradorRutas {
     String nombreOrigen,nombreDestino,tag;
     Raiz raizOrigen,raizDestino, raizH, raizV, raizD, raizC;
@@ -80,7 +80,6 @@ public class GeneradorRutas {
                 tag = n.toString();
                 switch (i) {
                     case 0 -> {
-                        System.out.println("Curva");
                         pintarNodoC();
                         pintarEnlaceC();
                         raizOrigen = raizC;
@@ -88,7 +87,6 @@ public class GeneradorRutas {
                         findRaiz();
                     }
                     case 1 -> {
-                        System.out.println("Diagonal");
                         pintarNodoD();
                         pintarEnlaceD();
                         raizOrigen = raizD;
@@ -96,7 +94,6 @@ public class GeneradorRutas {
                         findRaiz();
                     }
                     case 2 -> {
-                        System.out.println("Vertical");
                         pintarNodoV();
                         pintarEnlaceV();
                         raizOrigen = raizV;
@@ -104,7 +101,6 @@ public class GeneradorRutas {
                         findRaiz();
                     }
                     case 3 -> {
-                        System.out.println("Horizontal");
                         pintarNodoH();
                         pintarEnlaceH();
                         raizOrigen = raizH;
@@ -116,7 +112,6 @@ public class GeneradorRutas {
             
             
         }
-        System.out.println("Nuevo tag" + tag);
     }
     
     public void findRaiz(){
